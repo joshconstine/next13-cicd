@@ -37,7 +37,16 @@ function RestaurantDetails({ restaurant }: any) {
         <div>
           {reviews.map((review) => {
             return (
-              <div style={{ width: "300px", backgroundColor: "white" }}>
+              <div
+                style={{
+                  width: "300px",
+                  backgroundColor: "white",
+                  border: "1px solid grey",
+                  borderRadius: "15px",
+                  padding: "15px",
+                  margin: "15px 0px",
+                }}
+              >
                 <p>{review.user}</p>
                 <p>{review.message}</p>
               </div>

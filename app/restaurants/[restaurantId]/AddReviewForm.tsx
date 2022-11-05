@@ -9,9 +9,25 @@ const AddReviewForm = () => {
   };
   return (
     <form onSubmit={() => window.alert(review)}>
-      <label>leave review</label>
-      <textarea rows={4} name="review" value={review} onChange={handleChange} />
-      <button type="submit">add</button>
+      <label>
+        <textarea
+          rows={4}
+          name="review"
+          value={review}
+          onChange={handleChange}
+          style={{
+            height: "150px",
+            width: "300px",
+            fontSize: " 16px",
+            padding: "12px 20px",
+            boxSizing: "border-box",
+            borderRadius: "15px",
+            border: "1px solid grey",
+            resize: "none",
+          }}
+        />
+      </label>
+      <button type="submit">add review</button>
     </form>
   );
 };
