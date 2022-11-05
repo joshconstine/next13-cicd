@@ -1,13 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// Creating a new supabase server client object (e.g. in API route):
 import type { NextApiRequest, NextApiResponse } from "next";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 
-type Data = {
-  name: string;
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const supabaseServerClient = createServerSupabaseClient<any>({
+    req,
+    res,
+  });
+  const {
+    data: { user },
+  } = await supabaseServerClient.auth.getUser();
+
+  res.status(200).json({ name: user ?? "" });
 };
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: "John Doe" });
-}
