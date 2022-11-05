@@ -1,5 +1,5 @@
-// import RestaurantDetails from "./RestaurantDetails";
 import supabase from "../../../lib/supabase";
+import RestaurantDetails from "./RestaurantDetails";
 
 async function RestaurantDetailsPage({ params }: any) {
   const response = await supabase
@@ -8,8 +8,11 @@ async function RestaurantDetailsPage({ params }: any) {
     .eq("id", params.restaurantId);
 
   const restaurant = response.data ? response?.data[0] : null;
-
-  return <div>{restaurant.name}</div>;
+  return (
+    <div>
+      <RestaurantDetails restaurant={restaurant} />
+    </div>
+  );
 }
 
 export default RestaurantDetailsPage;
