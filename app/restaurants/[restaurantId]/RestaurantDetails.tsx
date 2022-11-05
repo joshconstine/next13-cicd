@@ -1,18 +1,14 @@
 import classes from "./RestaurantDetails.module.css";
 import Image from "next/image";
 import AddReviewForm from "./AddReviewForm";
+import supabase from "../../../lib/supabase";
 
-function RestaurantDetails({ restaurant }: any) {
-  const reviews = [
-    {
-      user: "Josh Constine",
-      message: "this place has amazing beer",
-    },
-    {
-      user: "Alyssia Constine",
-      message: "chips and salsa are amazing",
-    },
-  ];
+async function RestaurantDetails({ restaurant }: any) {
+  const response = await supabase
+    .from("comments")
+    .select("*")
+    .eq("restaurant_id", restaurant.id);
+  const comments = response.data ? response?.data : null;
 
   return (
     <article className={classes.details}>
@@ -35,7 +31,7 @@ function RestaurantDetails({ restaurant }: any) {
       <div>
         <h3>Reviews</h3>
         <div>
-          {reviews.map((review) => {
+          {comments?.map((review) => {
             return (
               <div
                 style={{
@@ -47,8 +43,8 @@ function RestaurantDetails({ restaurant }: any) {
                   margin: "15px 0px",
                 }}
               >
-                <p>{review.user}</p>
-                <p>{review.message}</p>
+                <p>{review.username}</p>
+                <p>{review.text}</p>
               </div>
             );
           })}

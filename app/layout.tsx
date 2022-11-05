@@ -4,7 +4,10 @@ import "./globals.css";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
 import { useState } from "react";
+import { AuthSession } from "@supabase/supabase-js";
+
 export default function RootLayout({ children, pageProps }: any) {
+  // const [session, setSession] = useState<AuthSession | null>(null);
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
     <SessionContextProvider
@@ -13,7 +16,7 @@ export default function RootLayout({ children, pageProps }: any) {
     >
       <html lang="en">
         <head />
-        {true ? (
+        {false ? (
           <body>
             <header>
               <Navbar session={false} />

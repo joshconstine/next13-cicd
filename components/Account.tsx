@@ -5,6 +5,7 @@ import {
   Session,
 } from "@supabase/auth-helpers-react";
 import { Database } from "../utils/database.types";
+import Avatar from "./Avatar";
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
