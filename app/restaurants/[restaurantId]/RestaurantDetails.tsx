@@ -1,8 +1,19 @@
 import classes from "./RestaurantDetails.module.css";
 import Image from "next/image";
+import AddReviewForm from "./AddReviewForm";
 
 function RestaurantDetails({ restaurant }: any) {
-  console.log(restaurant.img_url);
+  const reviews = [
+    {
+      user: "Josh Constine",
+      message: "this place has amazing beer",
+    },
+    {
+      user: "Alyssia Constine",
+      message: "chips and salsa are amazing",
+    },
+  ];
+
   return (
     <article className={classes.details}>
       <header>
@@ -20,6 +31,20 @@ function RestaurantDetails({ restaurant }: any) {
         }}
       >
         <Image src={restaurant.img_url} alt="image" layout="fill" />
+      </div>
+      <div>
+        <h3>Reviews</h3>
+        <div>
+          {reviews.map((review) => {
+            return (
+              <div style={{ width: "300px", backgroundColor: "white" }}>
+                <p>{review.user}</p>
+                <p>{review.message}</p>
+              </div>
+            );
+          })}
+        </div>
+        <AddReviewForm />
       </div>
     </article>
   );
