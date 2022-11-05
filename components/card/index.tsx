@@ -17,7 +17,7 @@ const Card = (props: DefaultCardProps) => {
     id,
   } = props;
   let imgSrc = imgUrl;
-  const classMap = {
+  const classMap: any = {
     large: styles.lgItem,
     medium: styles.mdItem,
     small: styles.smItem,
