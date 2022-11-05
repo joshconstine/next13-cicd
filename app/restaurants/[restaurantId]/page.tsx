@@ -5,11 +5,11 @@ async function RestaurantDetailsPage({ params }: any) {
   const response = await supabase
     .from("restaurants")
     .select("*")
-    .eq("id", params.restuarantId);
+    .eq("id", params.restaurantId);
 
-  console.log(response);
+  const restaurant = response?.data[0];
 
-  return <div>single restaurant</div>;
+  return <div>{restaurant.name}</div>;
 }
 
 export default RestaurantDetailsPage;
