@@ -12,12 +12,31 @@ async function RestaurantsLayout({ children }: any) {
       <aside className={classes.sidebar}>
         {data?.map((restaurant) => {
           return (
-            <div key={restaurant.id}>
-              <Link href={`/restaurants/${restaurant.id}`}>
-                {restaurant.name}
+            <div
+              key={restaurant.id}
+              style={{
+                paddingTop: "20px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Link
+                href={`/restaurants/${restaurant.id}`}
+                style={{
+                  fontSize: "22px",
+                  paddingTop: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div style={{ paddingBottom: "10px" }}>{restaurant.name}</div>
                 <Card
                   imgUrl={restaurant.img_url}
-                  size="medium"
+                  size="large"
                   id={restaurant.id}
                 />
               </Link>
