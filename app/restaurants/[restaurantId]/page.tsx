@@ -7,7 +7,7 @@ async function RestaurantDetailsPage({ params }: any) {
     .select("*")
     .eq("id", params.restaurantId);
 
-  const restaurant = response?.data[0];
+  const restaurant = response.data ? response?.data[0] : null;
 
   return <div>{restaurant.name}</div>;
 }
