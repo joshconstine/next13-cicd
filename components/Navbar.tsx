@@ -28,10 +28,10 @@ function Navbar({ session }: any) {
         ) : (
           <ul>
             <li>
-              <Link href="/">Login</Link>
+              <Link href="/login">Login</Link>
             </li>
             <li>
-              <Link href="/restaurants">Signup</Link>
+              <Link href="/signup">Signup</Link>
             </li>
           </ul>
         )}

@@ -1,33 +1,34 @@
+"use client";
 import Navbar from "../components/Navbar";
 import "./globals.css";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
+import { useState } from "react";
+export default function RootLayout({ children, pageProps }: any) {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      {true ? (
-        <body>
-          <header>
-            <Navbar session={false} />
-          </header>
-          {children}
-        </body>
-      ) : (
-        <body>
-          <header>
-            <Navbar session={true} />
-          </header>
-          {children}
-        </body>
-      )}
-    </html>
+    <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps?.initialSession}
+    >
+      <html lang="en">
+        <head />
+        {true ? (
+          <body>
+            <header>
+              <Navbar session={false} />
+            </header>
+            {children}
+          </body>
+        ) : (
+          <body>
+            <header>
+              <Navbar session={true} />
+            </header>
+            {children}
+          </body>
+        )}
+      </html>
+    </SessionContextProvider>
   );
 }
