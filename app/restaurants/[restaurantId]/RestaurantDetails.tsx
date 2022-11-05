@@ -54,7 +54,7 @@ const RestaurantDetails = asyncComponent(
               );
             })}
           </div>
-          <AddReviewForm />
+          <AddReviewForm restaurantId={restaurant.id} />
         </div>
       </article>
     );

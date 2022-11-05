@@ -1,14 +1,23 @@
 "use client";
 
 import { useState } from "react";
-
-const AddReviewForm = () => {
+import supabase from "../../../lib/supabase";
+const AddReviewForm = (props: any) => {
+  const { restaurantId } = props;
   const [review, setReview] = useState("");
   const handleChange = (e: any) => {
     setReview(e.target.value);
   };
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const { data, error } = await supabase
+      .from("comments")
+      .insert([
+        { username: "guest", text: review, restaurant_id: restaurantId },
+      ]);
+  };
   return (
-    <form onSubmit={() => window.alert(review)}>
+    <form onSubmit={handleSubmit}>
       <label>
         <textarea
           rows={4}
