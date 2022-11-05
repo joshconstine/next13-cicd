@@ -2,7 +2,7 @@ import Link from "next/link";
 import classes from "./Navbar.module.css";
 import Image from "next/image";
 
-function Navbar() {
+function Navbar({ session }: any) {
   return (
     <nav className={classes.nav}>
       <div
@@ -16,14 +16,25 @@ function Navbar() {
         <Image src="/static/logo.png" alt="lgoo" layout="fill" />
       </div>
       <div>
-        <ul>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/restaurants">Restaurants</Link>
-          </li>
-        </ul>
+        {session ? (
+          <ul>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/restaurants">Restaurants</Link>
+            </li>
+          </ul>
+        ) : (
+          <ul>
+            <li>
+              <Link href="/">Login</Link>
+            </li>
+            <li>
+              <Link href="/restaurants">Signup</Link>
+            </li>
+          </ul>
+        )}
       </div>
     </nav>
   );
