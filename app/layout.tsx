@@ -2,9 +2,8 @@
 import Navbar from "../components/Navbar";
 import "./globals.css";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { useState } from "react";
-import { AuthSession } from "@supabase/supabase-js";
 
 export default function RootLayout({ children, pageProps }: any) {
   // const [session, setSession] = useState<AuthSession | null>(null);
