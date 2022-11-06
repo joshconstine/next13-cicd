@@ -15,7 +15,7 @@ async function RestaurantsLayout({ children }: any) {
             <div
               key={restaurant.id}
               style={{
-                paddingTop: "20px",
+                paddingTop: "10px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",

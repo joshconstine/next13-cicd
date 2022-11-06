@@ -13,6 +13,7 @@ const nextConfig = {
       "image.shutterstock.com",
       "www.restaurantnews.com",
       "popmenucloud.com",
+      "images.squarespace-cdn.com",
     ],
   },
 };
