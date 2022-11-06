@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import supabase from "../../../lib/supabase";
+import classes from "./AddReviewForm.module.css";
+
 const AddReviewForm = (props: any) => {
   const { restaurantId } = props;
   const [review, setReview] = useState("");
+  const [commetMode, setCommetMode] = useState(false);
   const handleChange = (e: any) => {
     setReview(e.target.value);
   };
@@ -17,27 +20,63 @@ const AddReviewForm = (props: any) => {
       ]);
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <textarea
-          rows={4}
-          name="review"
-          value={review}
-          onChange={handleChange}
+    <div>
+      {commetMode && (
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <label>
+            <textarea
+              className={classes.textArea}
+              rows={4}
+              name="review"
+              value={review}
+              onChange={handleChange}
+            />
+          </label>
+          <button
+            type="submit"
+            style={{
+              background: "#d6ccc2",
+              borderRadius: "999px",
+              boxShadow: "#403D39 0 10px 20px -10px",
+              boxSizing: "border-box",
+              color: "black",
+              cursor: "pointer",
+              fontSize: "16px",
+              outline: "none",
+              border: "none",
+              padding: "8px 18px",
+              width: "120px",
+            }}
+          >
+            Submit
+          </button>
+        </form>
+      )}
+      {!commetMode && (
+        <button
           style={{
-            height: "150px",
-            width: "300px",
-            fontSize: " 16px",
-            padding: "12px 20px",
+            background: "#d6ccc2",
+            borderRadius: "999px",
+            boxShadow: "#403D39 0 10px 20px -10px",
             boxSizing: "border-box",
-            borderRadius: "15px",
-            border: "1px solid grey",
-            resize: "none",
+            color: "black",
+            cursor: "pointer",
+            fontSize: "16px",
+            outline: "none",
+            border: "none",
+            padding: "8px 18px",
           }}
-        />
-      </label>
-      <button type="submit">add review</button>
-    </form>
+          onClick={() => {
+            setCommetMode(true);
+          }}
+        >
+          Add Review
+        </button>
+      )}
+    </div>
   );
 };
 

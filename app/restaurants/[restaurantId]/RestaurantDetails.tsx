@@ -44,7 +44,7 @@ const RestaurantDetails = asyncComponent(
                   style={{
                     width: "300px",
                     backgroundColor: "white",
-                    border: "1px solid grey",
+                    border: "1px solid #d5bdaf",
                     borderRadius: "15px",
                     padding: "15px",
                     margin: "15px 0px",
