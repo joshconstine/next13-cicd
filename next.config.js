@@ -11,6 +11,8 @@ const nextConfig = {
       "static.spotapps.co",
       "ballastpoint.com",
       "image.shutterstock.com",
+      "www.restaurantnews.com",
+      "popmenucloud.com",
     ],
   },
 };

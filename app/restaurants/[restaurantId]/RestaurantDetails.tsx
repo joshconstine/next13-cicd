@@ -19,6 +19,7 @@ const RestaurantDetails = asyncComponent(
       <article className={classes.details}>
         <header>
           <h1>{restaurant.name}</h1>
+          <p>{restaurant.type}</p>
         </header>
         <div
           style={{
@@ -33,6 +34,7 @@ const RestaurantDetails = asyncComponent(
         >
           <Image src={restaurant.img_url} alt="image" layout="fill" />
         </div>
+        <p>{restaurant.description}</p>
         <div>
           <h3>Reviews</h3>
           <div>
