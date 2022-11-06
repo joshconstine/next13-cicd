@@ -13,7 +13,7 @@ function Navbar({ session }: any) {
           height: "80px",
         }}
       >
-        <Image src="/static/logo.png" alt="lgoo" layout="fill" />
+        <Image src="/static/logo.png" alt="lgoo" width={200} height={70} />
       </div>
       <div>
         {session ? (

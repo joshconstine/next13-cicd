@@ -9,8 +9,22 @@ export default function RestaurantPage() {
         flexDirection: "column",
       }}
     >
-      <h1>Check out a restaurant</h1>
-      <span className="material-symbols-outlined">keyboard_return</span>
+      <h1
+        style={{
+          margin: "0px",
+        }}
+      >
+        Check out a restaurant
+      </h1>
+      <span
+        className="material-symbols-outlined"
+        style={{
+          color: "#ed2250",
+          fontSize: "40px",
+        }}
+      >
+        keyboard_return
+      </span>
     </div>
   );
 }
