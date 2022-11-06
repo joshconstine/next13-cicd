@@ -17,14 +17,45 @@ function Navbar({ session }: any) {
       </div>
       <div>
         {session ? (
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/restaurants">Restaurants</Link>
-            </li>
-          </ul>
+          <>
+            <Link href="/">
+              <button
+                style={{
+                  background: "#403D39",
+                  borderRadius: "999px",
+                  boxShadow: "#403D39 0 10px 20px -10px",
+                  boxSizing: "border-box",
+                  color: "white",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                  outline: "none",
+                  border: "none",
+                  padding: "8px 18px",
+                }}
+              >
+                Home
+              </button>
+            </Link>
+            <Link href="/restaurants">
+              {" "}
+              <button
+                style={{
+                  background: "#403D39",
+                  borderRadius: "999px",
+                  boxShadow: "#403D39 0 10px 20px -10px",
+                  boxSizing: "border-box",
+                  color: "white",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                  outline: "none",
+                  border: "none",
+                  padding: "8px 18px",
+                }}
+              >
+                Restaurants
+              </button>
+            </Link>
+          </>
         ) : (
           <ul>
             <li>

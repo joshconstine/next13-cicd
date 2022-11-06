@@ -3,11 +3,12 @@ import Navbar from "../components/Navbar";
 import "./globals.css";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function RootLayout({ children, pageProps }: any) {
   // const [session, setSession] = useState<AuthSession | null>(null);
   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
+
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}
