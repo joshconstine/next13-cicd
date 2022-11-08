@@ -1,23 +1,31 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import supabase from "../../../lib/supabase";
 import classes from "./AddReviewForm.module.css";
 
 const AddReviewForm = (props: any) => {
+  const { data: session } = useSession();
+  const router = useRouter();
   const { restaurantId } = props;
   const [review, setReview] = useState("");
   const [commetMode, setCommetMode] = useState(false);
   const handleChange = (e: any) => {
-    setReview(e.target.value);
+    e.preventDefault();
+    setReview(e?.target?.value);
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const { data, error } = await supabase
-      .from("comments")
-      .insert([
-        { username: "guest", text: review, restaurant_id: restaurantId },
-      ]);
+    const { data, error } = await supabase.from("comments").insert([
+      {
+        username: session?.user?.name,
+        text: review,
+        restaurant_id: restaurantId,
+      },
+    ]);
+    setCommetMode(false);
   };
   return (
     <div>
@@ -70,7 +78,7 @@ const AddReviewForm = (props: any) => {
             padding: "8px 18px",
           }}
           onClick={() => {
-            setCommetMode(true);
+            session ? setCommetMode(true) : router.push("/login");
           }}
         >
           Add Review
