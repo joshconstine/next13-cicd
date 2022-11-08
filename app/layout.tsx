@@ -6,15 +6,15 @@ import { Inter } from "@next/font/google";
 const inter = Inter();
 export default function RootLayout({ children, ...props }: any) {
   return (
-    <SessionProvider session={props.session}>
-      <html lang="en" className={inter.className}>
-        <body>
+    <html lang="en" className={inter.className}>
+      <body>
+        <SessionProvider session={props.session}>
           <header>
             <Navbar />
           </header>
           {children}
-        </body>
-      </html>
-    </SessionProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }
