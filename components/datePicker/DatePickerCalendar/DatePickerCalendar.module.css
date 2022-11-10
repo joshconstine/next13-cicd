@@ -36,6 +36,7 @@
   color: #fff;
 }
 .DatePickerCalendar__dayCell_inRange {
-  background-color: red;
+  background-color: #0036cc;
+  opacity: 0.4;
   color: #fff;
 }
