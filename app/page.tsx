@@ -1,14 +1,36 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { DatePicker } from "../components/datePicker";
+import dayjs from "dayjs";
+import { DateRangePicker } from "../components/datePicker/DateRangePicker";
 
 export default function Home() {
   const { data: session } = useSession();
+  const [selectedDate, setSelectedDate] = useState(dayjs());
+  const [dateRange, setDateRange] = useState([
+    dayjs("11/10/2022"),
+    dayjs("11/20/2022"),
+  ]);
+
   if (session) {
     return (
       <>
         Signed in as {session?.user?.email} <br />
         <button onClick={() => signOut()}>Sign out</button>
+        <DatePicker
+          selectedDate={selectedDate}
+          onChange={(day) => {
+            setSelectedDate(day);
+          }}
+        />
+        <DateRangePicker
+          dates={dateRange}
+          onChange={(day) => {
+            setDateRange([]);
+          }}
+        />
       </>
     );
   }
