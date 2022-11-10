@@ -62,6 +62,16 @@ export interface IDatePickerCalendarProps {
   onChange: (newDate: Dayjs) => void;
 }
 
+const isBetween = (
+  value: Dayjs,
+  startDate: Dayjs,
+  endDate: Dayjs,
+  granularity: string
+) => {
+  console.log(startDate < value && value < endDate);
+  return startDate < value && value < endDate;
+};
+
 export const DatePickerCalendar: React.FC<IDatePickerCalendarProps> = ({
   shownDate,
   selectedDate,
@@ -87,11 +97,17 @@ export const DatePickerCalendar: React.FC<IDatePickerCalendarProps> = ({
         <div key={rowIndex} className={styles.DatePickerCalendar__row}>
           {cells.map(({ text, value }, i) => {
             let isSelected = false;
+            let isInRange = false;
+
             if (Array.isArray(selectedDate)) {
-              selectedDate.forEach((elem) => {
-                console.log(value.toString() === elem.toString());
-                if (value.toString() === elem.toString()) isSelected = true;
-              });
+              let startDate = selectedDate[0];
+              let endDate = selectedDate[1];
+              if (
+                value.toString() === startDate.toString() ||
+                value.toString() === endDate.toString()
+              )
+                isSelected = true;
+              if (isBetween(value, startDate, endDate, "day")) isInRange = true;
             } else {
               if (value.toString() === selectedDate.toString())
                 isSelected = true;
@@ -104,7 +120,8 @@ export const DatePickerCalendar: React.FC<IDatePickerCalendarProps> = ({
                   styles.DatePickerCalendar__dayCell,
                   isSelected
                     ? styles.DatePickerCalendar__dayCell_selected
-                    : null
+                    : null,
+                  isInRange ? styles.DatePickerCalendar__dayCell_inRange : null
                 )}
                 onClick={handleSelectDate(value)}
               >
