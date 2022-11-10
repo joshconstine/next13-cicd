@@ -13,6 +13,7 @@ export default function Home() {
     dayjs("11/10/2022"),
     dayjs("11/20/2022"),
   ]);
+  const [dateRangeSeletorToggle, setDateRangeSeletorToggle] = useState(true);
 
   if (session) {
     return (
@@ -27,8 +28,12 @@ export default function Home() {
         />
         <DateRangePicker
           dates={dateRange}
+          // isStartDate={dateRangeSeletorToggle}
           onChange={(day) => {
-            setDateRange([]);
+            dateRangeSeletorToggle
+              ? setDateRange([day, dateRange[1]])
+              : setDateRange([dateRange[0], day]);
+            setDateRangeSeletorToggle(!dateRangeSeletorToggle);
           }}
         />
       </>
