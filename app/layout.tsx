@@ -1,8 +1,7 @@
-"use client";
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import "./globals.css";
-import { SessionProvider } from "next-auth/react";
 import { Inter } from "@next/font/google";
+import AuthContext from "./AuthContext";
 const inter = Inter();
 export default function RootLayout({ children, ...props }: any) {
   return (
@@ -14,12 +13,12 @@ export default function RootLayout({ children, ...props }: any) {
         />
       </head>
       <body>
-        <SessionProvider session={props.session}>
+        <AuthContext session={props.session}>
           <header>
             <Navbar />
           </header>
           {children}
-        </SessionProvider>
+        </AuthContext>
       </body>
     </html>
   );

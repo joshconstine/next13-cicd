@@ -6,7 +6,6 @@ import { DatePickerCalendar } from "../DatePickerCalendar";
 import styles from "./DateRangePicker.module.css";
 export interface IDatePickerProps {
   dates: Dayjs[];
-
   onChange: (newDate: Dayjs) => void;
 }
 

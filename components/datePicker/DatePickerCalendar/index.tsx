@@ -58,7 +58,6 @@ export function getCalendarRows(date: Dayjs): Array<ICalendarCell[]> {
 export interface IDatePickerCalendarProps {
   shownDate: Dayjs;
   selectedDate: Dayjs | Dayjs[];
-
   onChange: (newDate: Dayjs) => void;
 }
 
