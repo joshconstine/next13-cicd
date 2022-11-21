@@ -1,0 +1,58 @@
+.card {
+  width: 881px;
+  height: 585px;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  align-self: flex-start;
+}
+.header {
+  margin-bottom: 18px;
+}
+.prompt {
+  margin-bottom: 49px;
+}
+.iamgeContainer {
+  display: flex;
+  gap: 33px;
+  margin-bottom: 49px;
+}
+.image {
+  width: 139px;
+  height: 135px;
+  background-color: tan;
+  border-radius: 15px;
+}
+.card input {
+  font-weight: 400;
+  font-size: 28px;
+  background-color: transparent;
+}
+.card input :focus {
+  outline: none;
+  border: none;
+}
+
+.card ::placeholder {
+  font-weight: 400;
+  font-size: 28px;
+
+  color: #000000;
+}
+.card form {
+  background-color: #d9d9d9;
+  width: 780px;
+  height: 66px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 31px;
+  font-weight: 400;
+  font-size: 28px;
+}

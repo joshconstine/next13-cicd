@@ -7,6 +7,7 @@ async function RestaurantsLayout({ children }: any) {
   const response = await supabase.from("restaurants").select("*");
   const { data } = response;
 
+  console.log(data);
   return (
     <div className={classes.layout}>
       <aside className={classes.sidebar}>

@@ -14,6 +14,7 @@ const nextConfig = {
       "www.restaurantnews.com",
       "popmenucloud.com",
       "images.squarespace-cdn.com",
+      "images.pexels.com",
     ],
   },
 };
