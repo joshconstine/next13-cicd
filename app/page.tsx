@@ -25,7 +25,6 @@ export default function Home() {
   return (
     <div className={classes.main}>
       <WelcomeCard />
-      hello
     </div>
   );
 }
