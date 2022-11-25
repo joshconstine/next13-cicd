@@ -4,7 +4,7 @@ import Image from "next/image";
 import AddReviewForm from "./AddReviewForm";
 import { PrismaClient } from '@prisma/client'
 import { ReactElement } from "react";
-// import DeleteButton from "./DeleteButton";
+import DeleteButton from "./DeleteButton";
 const prisma = new PrismaClient()
 function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
   return fn as (arg: T) => R;
@@ -47,7 +47,7 @@ const RestaurantDetails = asyncComponent(
                 >
                   <p>{'Josh'}</p>
                   <p>{review.text}</p>
-                  {/* <DeleteButton id={review.id} /> */}
+                  <DeleteButton id={review.id} />
                 </div>
               );
             })}

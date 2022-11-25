@@ -18,6 +18,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         });
     } else if (req.method === 'GET') {
         res.json({ "name": 'joshua' })
+    } else if (req.method === 'DELETE') {
+        console.log('in delete')
+        const body = JSON.parse(req.body)
+        const resp = await prisma.comment.delete({
+            where: {
+                id: body.id
+            }
+        })
     } else {
         // Handle any other HTTP method
     }
