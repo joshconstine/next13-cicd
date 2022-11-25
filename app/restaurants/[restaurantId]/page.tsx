@@ -1,13 +1,14 @@
-import supabase from "../../../lib/supabase";
 import RestaurantDetails from "./RestaurantDetails";
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 async function RestaurantDetailsPage({ params }: any) {
-  const response = await supabase
-    .from("restaurants")
-    .select("*")
-    .eq("id", params.restaurantId);
+  const restaurant = await prisma.restaurant.findUnique({
+    where: {
+      id: Number(params.restaurantId)
+    }
+  });
 
-  const restaurant = response.data ? response?.data[0] : null;
   return (
     <div>
       <RestaurantDetails restaurant={restaurant} />

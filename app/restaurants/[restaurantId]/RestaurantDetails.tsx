@@ -1,19 +1,21 @@
+
 import classes from "./RestaurantDetails.module.css";
 import Image from "next/image";
 import AddReviewForm from "./AddReviewForm";
-import supabase from "../../../lib/supabase";
-
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
   return fn as (arg: T) => R;
 }
 
 const RestaurantDetails = asyncComponent(
   async ({ restaurant }: { restaurant: any }) => {
-    const response = await supabase
-      .from("comments")
-      .select("*")
-      .eq("restaurant_id", restaurant.id);
-    const comments = response.data ? response?.data : null;
+    const comments = await prisma.comment.findMany({
+      where:
+      {
+        restaurant_id: restaurant.id
+      }
+    })
 
     return (
       <article className={classes.details}>
@@ -21,26 +23,15 @@ const RestaurantDetails = asyncComponent(
           <h1>{restaurant.name}</h1>
           <p>{restaurant.type}</p>
         </header>
-        <div
-          style={{
-            position: "relative",
-            width: "500px",
-            height: "400px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Image src={restaurant.img_url} alt="image" layout="fill" />
-        </div>
+
         <p>{restaurant.description}</p>
         <div>
           <h3>Reviews</h3>
           <div>
-            {comments?.map((review) => {
+            {comments?.map((review, i: number) => {
               return (
                 <div
+                  key={i}
                   style={{
                     width: "300px",
                     backgroundColor: "white",
@@ -50,7 +41,7 @@ const RestaurantDetails = asyncComponent(
                     margin: "15px 0px",
                   }}
                 >
-                  <p>{review.username}</p>
+                  <p>{'Josh'}</p>
                   <p>{review.text}</p>
                 </div>
               );

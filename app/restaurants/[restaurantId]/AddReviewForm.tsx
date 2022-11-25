@@ -3,8 +3,8 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import supabase from "../../../lib/supabase";
 import classes from "./AddReviewForm.module.css";
+
 
 const AddReviewForm = (props: any) => {
   const { data: session } = useSession();
@@ -16,16 +16,27 @@ const AddReviewForm = (props: any) => {
     e.preventDefault();
     setReview(e?.target?.value);
   };
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    const { data, error } = await supabase.from("comments").insert([
-      {
-        username: session?.user?.name,
+    e.stopPropagation()
+    const postData = async () => {
+      const data = {
+        user_id: 1,
         text: review,
         restaurant_id: restaurantId,
-      },
-    ]);
-    setCommetMode(false);
+        rating_id: 1,
+      };
+
+      const response = await fetch("/api/comment", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      return response.json();
+    };
+    postData().then((data) => {
+      alert(data.message);
+    });
+
   };
   return (
     <div>

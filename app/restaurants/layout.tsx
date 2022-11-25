@@ -1,13 +1,10 @@
 import classes from "./layout.module.css";
-import supabase from "../../lib/supabase";
 import Link from "next/link";
 import Card from "../../components/card";
-
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 async function RestaurantsLayout({ children }: any) {
-  const response = await supabase.from("restaurants").select("*");
-  const { data } = response;
-
-  console.log(data);
+  const data = await prisma.restaurant.findMany()
   return (
     <div className={classes.layout}>
       <aside className={classes.sidebar}>
@@ -34,9 +31,8 @@ async function RestaurantsLayout({ children }: any) {
                   alignItems: "center",
                 }}
               >
-                <div style={{ paddingBottom: "10px" }}>{restaurant.name}</div>
                 <Card
-                  imgUrl={restaurant.img_url}
+                  text={restaurant.name}
                   size="large"
                   id={restaurant.id}
                 />
