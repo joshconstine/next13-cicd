@@ -5,6 +5,7 @@ import AddReviewForm from "./AddReviewForm";
 import { PrismaClient } from '@prisma/client'
 import { ReactElement } from "react";
 import DeleteButton from "./DeleteButton";
+import FileUplod from "../../components/FileUpload";
 const prisma = new PrismaClient()
 function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
   return fn as (arg: T) => R;
@@ -26,6 +27,7 @@ const RestaurantDetails = asyncComponent(
         <header>
           <h1>{restaurant.name}</h1>
           <p>{restaurant.type}</p>
+          <FileUplod />
         </header>
 
         <p>{restaurant.description}</p>
