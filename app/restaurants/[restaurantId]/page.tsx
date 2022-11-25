@@ -8,6 +8,7 @@ async function RestaurantDetailsPage({ params }: any) {
       id: Number(params.restaurantId)
     }
   });
+  await prisma.$disconnect()
 
   return (
     <div>
