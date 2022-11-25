@@ -24,7 +24,7 @@ const FileUplod = () => {
 
         try {
             const res = await fetch(
-                `/api/upload-url?file=${filename}&fileType=${fileType}`, { mode: "no-cors" }
+                `/api/s3/upload-url?file=${filename}&fileType=${fileType}`, { mode: "no-cors" }
             )
             const { url, fields } = await res.json()
             const formData = new FormData()
