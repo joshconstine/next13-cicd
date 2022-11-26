@@ -15,6 +15,7 @@ const nextConfig = {
       "popmenucloud.com",
       "images.squarespace-cdn.com",
       "images.pexels.com",
+      "s3.us-west-1.amazonaws.com"
     ],
   },
 };

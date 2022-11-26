@@ -22,3 +22,11 @@ model Restaurant {
    created_at  DateTime @default(now())   
    description String @db.VarChar(255)
 }
+model Photos {
+  id Int @default(autoincrement()) @id
+  url String @db.VarChar(255)
+  created_at DateTime @default(now())
+  user_id Int? @default(0)
+  restaurant_id Int?
+  comment_id Int?
+}
