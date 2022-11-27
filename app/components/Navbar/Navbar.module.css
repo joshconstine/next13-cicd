@@ -2,8 +2,11 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #e9e6e1;
+  background-color: white;
   align-items: center;
+  opacity: .7;
+  position: absolute;
+  width: 100%;
 }
 
 .nav ul {

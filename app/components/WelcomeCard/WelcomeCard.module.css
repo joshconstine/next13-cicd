@@ -56,3 +56,44 @@
   font-weight: 400;
   font-size: 28px;
 }
+@media (max-width: 400px) {
+  .card {
+      width: 90%;
+      height: auto;
+      padding: 8px;
+      gap: 6px;
+      justify-content: center;
+  }
+  .iamgeContainer{
+    flex-wrap: wrap;
+    justify-content:center;
+    gap: 18px;
+
+  }
+  .card form {
+    width: 90%;
+  }
+  .prompt {
+    margin: none;
+  }
+ .card ::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+
+  color: #000000;
+}
+.card form {
+  background-color: #d9d9d9;
+  width:90%;
+  height: auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  font-weight: 400;
+  font-size: 14px;
+} .card input{ 
+  width: 200px;
+}
+}
