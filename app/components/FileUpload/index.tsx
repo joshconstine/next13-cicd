@@ -4,7 +4,7 @@ import { Cormorant_SC } from "@next/font/google";
 import React, { ChangeEvent, useState } from "react";
 // import aws from "../../../pages/api/creatingAws";
 
-const FileUplod = () => {
+const FileUplod = ({ restaurantId }: { restaurantId: Number }) => {
     const [messege, setMessege] = useState<string>('')
     const [file, setFile] = useState<any>()
 
@@ -31,13 +31,36 @@ const FileUplod = () => {
             Object.entries({ ...fields, file }).forEach(([key, value]) => {
                 formData.append(key, value as string)
             })
-            const upload = await fetch(url, {
-                method: 'POST',
+            const uniqueUrl = `restaurants/${restaurantId}/${(Math.round(Math.random() * 100))}.jpeg`
+            const postURL = `${url}/${uniqueUrl}`
+
+            const upload = await fetch(postURL, {
+                method: 'PUT',
                 body: formData,
+                headers:
+                {
+                    'Content-type': 'image'
+                }
             })
 
             if (upload.ok) {
-                console.log('Uploaded successfully!')
+                const postData = async () => {
+                    const data = {
+                        user_id: 0,
+                        restaurant_id: restaurantId,
+                        url: uniqueUrl,
+                    };
+
+                    const response = await fetch("/api/photos", {
+                        method: "POST",
+                        body: JSON.stringify(data),
+                    });
+                    return response.json();
+                };
+                postData().then((data) => {
+                    console.log('linked to restaurant')
+                });
+
             } else {
                 console.error('Upload failed.')
             }

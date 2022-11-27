@@ -27,7 +27,7 @@ const RestaurantDetails = asyncComponent(
         <header>
           <h1>{restaurant.name}</h1>
           <p>{restaurant.type}</p>
-          <FileUplod />
+          <FileUplod restaurantId={restaurant.id} />
         </header>
 
         <p>{restaurant.description}</p>
