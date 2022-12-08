@@ -4,10 +4,7 @@ const prisma = new PrismaClient()
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        console.log('in Post')
-        console.log(req.body.text)
         const body = JSON.parse(req.body)
-        console.log(body)
         const resp = await prisma.comment.create({
             data: {
                 user_id: body.user_id,
@@ -19,7 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     } else if (req.method === 'GET') {
         res.json({ "name": 'joshua' })
     } else if (req.method === 'DELETE') {
-        console.log('in delete')
         const body = JSON.parse(req.body)
         const resp = await prisma.comment.delete({
             where: {

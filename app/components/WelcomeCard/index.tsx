@@ -5,8 +5,10 @@ import SearchFrom from "./SearchForm";
 const WelcomeCard = () => {
   return (
     <div className={classes.card}>
-      <div className={classes.logo}>logo</div>
-      <h1 className={classes.header}>Welcome...</h1>
+      <div className={classes.iconContainer}>
+        <Image src="/static/logo-Icon.png" alt="lgoo" width={100} height={100} className={classes.logo} />
+        <h1 className={classes.header}>Welcome...</h1>
+      </div>
       <span className={classes.prompt}>
         Search the city you would like to eat in below
       </span>
