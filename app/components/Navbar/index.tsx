@@ -1,8 +1,18 @@
+"use client";
 import Link from "next/link";
 import classes from "./Navbar.module.css";
 import Image from "next/image";
+import { useSession, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function Navbar() {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const handleLogoutClick = (e: Event) => {
+    e.preventDefault();
+    signOut();
+    router.push("/");
+  };
   return (
     <nav className={classes.nav}>
       <div
@@ -53,6 +63,67 @@ function Navbar() {
             Restaurants
           </button>
         </Link>
+        {session ? (
+          <>
+            {" "}
+            <button
+              onClick={handleLogoutClick}
+              style={{
+                background: "#403D39",
+                borderRadius: "999px",
+                boxShadow: "#403D39 0 10px 20px -10px",
+                boxSizing: "border-box",
+                color: "white",
+                cursor: "pointer",
+                fontSize: "16px",
+                outline: "none",
+                border: "none",
+                padding: "8px 18px",
+              }}
+            >
+              Logout
+            </button>
+            <Link href="/profile">
+              {" "}
+              <button
+                style={{
+                  background: "#403D39",
+                  borderRadius: "999px",
+                  boxShadow: "#403D39 0 10px 20px -10px",
+                  boxSizing: "border-box",
+                  color: "white",
+                  cursor: "pointer",
+                  fontSize: "16px",
+                  outline: "none",
+                  border: "none",
+                  padding: "8px 18px",
+                }}
+              >
+                Profile
+              </button>
+            </Link>
+          </>
+        ) : (
+          <Link href="/login">
+            {" "}
+            <button
+              style={{
+                background: "#403D39",
+                borderRadius: "999px",
+                boxShadow: "#403D39 0 10px 20px -10px",
+                boxSizing: "border-box",
+                color: "white",
+                cursor: "pointer",
+                fontSize: "16px",
+                outline: "none",
+                border: "none",
+                padding: "8px 18px",
+              }}
+            >
+              Log in
+            </button>
+          </Link>
+        )}
       </div>
     </nav>
   );

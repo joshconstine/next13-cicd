@@ -1,5 +1,6 @@
 "use-client";
 
+import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 
 const SearchFrom = () => {
@@ -23,15 +24,17 @@ const SearchFrom = () => {
         value={searchValue}
         onChange={handleChange}
       ></input>{" "}
-      <span
-        className="material-symbols-outlined"
-        style={{
-          color: disableSearch ? "darkgray" : "black",
-          fontSize: "40px",
-        }}
-      >
-        play_arrow
-      </span>
+      <Link href={"/restaurants"}>
+        <span
+          className="material-symbols-outlined"
+          style={{
+            color: disableSearch ? "darkgray" : "black",
+            fontSize: "40px",
+          }}
+        >
+          play_arrow
+        </span>
+      </Link>
     </form>
   );
 };
