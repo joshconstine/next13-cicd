@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL_AWS")
 }
 
 model Comment {
@@ -29,4 +29,11 @@ model Photos {
   user_id Int? @default(0)
   restaurant_id Int?
   comment_id Int?
+}
+model Users {
+  id Int @default(autoincrement()) @id
+  email String @db.VarChar(255) @unique
+  created_at DateTime @default(now())
+  image String?  @db.VarChar(255)
+  user_name String  @db.VarChar(255)
 }
