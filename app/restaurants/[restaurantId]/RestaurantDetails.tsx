@@ -35,9 +35,11 @@ const RestaurantDetails = asyncComponent(
           <h3>Reviews</h3>
           <div>
             {comments?.map((review, i: number) => {
+              const elementId = `comment-${review.id}`
               return (
                 <div
                   key={i}
+                  id={elementId}
                   style={{
                     width: "300px",
                     backgroundColor: "white",
@@ -49,7 +51,7 @@ const RestaurantDetails = asyncComponent(
                 >
                   <p>{'Josh'}</p>
                   <p>{review.text}</p>
-                  <DeleteButton id={review.id} />
+                  <DeleteButton id={review.id} elementId={elementId} />
                 </div>
               );
             })}
