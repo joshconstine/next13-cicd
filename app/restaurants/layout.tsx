@@ -28,7 +28,7 @@ async function RestaurantsLayout({ children }: any) {
 
         {
           data.map((restaurant) => {
-            const imgSrc = photoUrls.map((photo: IPhoto) => {
+            const imgSrc = photoUrls.map((photo: any) => {
               if (photo.restaurant_id === restaurant.id) return photo.url
               else return null
             }).find(elem => elem !== null)

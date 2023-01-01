@@ -1,7 +1,6 @@
 "use client"
 import * as React from 'react';
 import { useState } from 'react';
-import { AutoComplete } from 'antd';
 
 interface ReviewFormProps {
     // the restaurant that the review is for
