@@ -6,6 +6,7 @@ import { PrismaClient } from '@prisma/client'
 import { ReactElement } from "react";
 import DeleteButton from "./DeleteButton";
 import FileUplod from "../../components/FileUpload";
+import SingleComment from "../../../components/comments/singleComment";
 const prisma = new PrismaClient()
 function asyncComponent<T, R>(fn: (arg: T) => Promise<R>): (arg: T) => R {
   return fn as (arg: T) => R;
@@ -34,25 +35,10 @@ const RestaurantDetails = asyncComponent(
         <div>
           <h3>Reviews</h3>
           <div>
-            {comments?.map((review, i: number) => {
-              const elementId = `comment-${review.id}`
+            {comments?.map((comment, i: number) => {
+
               return (
-                <div
-                  key={i}
-                  id={elementId}
-                  style={{
-                    width: "300px",
-                    backgroundColor: "white",
-                    border: "1px solid #d5bdaf",
-                    borderRadius: "15px",
-                    padding: "15px",
-                    margin: "15px 0px",
-                  }}
-                >
-                  <p>{'Josh'}</p>
-                  <p>{review.text}</p>
-                  <DeleteButton id={review.id} elementId={elementId} />
-                </div>
+                <SingleComment comment={comment} />
               );
             })}
           </div>

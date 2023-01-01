@@ -1,0 +1,56 @@
+.comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    /* background-color: red; */
+  }
+  
+  .commentAuthor {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  
+  .commentAuthorImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+  }
+  
+  .commentAuthorImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .commentAuthorName {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .commentText {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .commentActions {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .commentActions a {
+    margin-left: 8px;
+    text-decoration: none;
+    color: #999;
+  }
+  
+  .commentActions a:hover {
+    color: #666;
+  }
+  
