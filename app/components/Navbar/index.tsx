@@ -4,12 +4,12 @@ import classes from "./Navbar.module.css";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { MouseEventHandler } from "react";
 
 function Navbar() {
   const { data: session } = useSession();
   const router = useRouter();
-  const handleLogoutClick = (e: Event) => {
-    e.preventDefault();
+  const handleLogoutClick = (e: MouseEventHandler<HTMLButtonElement>) => {
     signOut();
     router.push("/");
   };
