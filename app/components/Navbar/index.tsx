@@ -9,7 +9,7 @@ import { MouseEventHandler } from "react";
 function Navbar() {
   const { data: session } = useSession();
   const router = useRouter();
-  const handleLogoutClick = (e: MouseEventHandler<HTMLButtonElement>) => {
+  const handleLogoutClick = (e: any) => {
     signOut();
     router.push("/");
   };
